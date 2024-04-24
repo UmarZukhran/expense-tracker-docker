@@ -6,6 +6,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Income from './Components/Incomes/Income'
 import Expenses from './Components/Expenses/Expenses';
 import Navigation from './Components/Navigation/Navigation';
+import CurrencyConverter from './Components/CurrencyCvt/currency-convertor';
 import { useGlobalContext } from './context/globalContext';
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
         return <Income />
       case 3: 
         return <Expenses />
+      case 4:
+        return <CurrencyConverter />
       default: 
         return <Dashboard />
     }
@@ -47,10 +50,8 @@ const AppStyled = styled.div`
   position: relative; 
   main{
     flex: 1;
-    background: rgba(252, 246, 249, 0.78);
-    border: 3px solid #FFFFFF;
+    background: #BB8493;
     backdrop-filter: blur(4.5px);
-    border-radius: 32px;
     overflow-x: hidden;
     &::-webkit-scrollbar{
       width: 0;

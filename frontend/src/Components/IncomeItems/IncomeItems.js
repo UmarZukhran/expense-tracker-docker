@@ -99,8 +99,8 @@ function IncomeItem({
 }
 
 const IncomeItemStyled = styled.div`
-    background: #FCF6F9;
-    border: 2px solid #FFFFFF;
+    background: #EFE1D1;
+    border: 2px solid #EFE1D1;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     border-radius: 20px;
     padding: 1rem;

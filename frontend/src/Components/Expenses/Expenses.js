@@ -32,7 +32,7 @@ function Expenses() {
                                 description={description} 
                                 amount={rupiah(amount)} 
                                 date={date} 
-                                type="expense"
+                                type='expense'
                                 category={category} 
                                 indicatorColor="var(--color-green)"
                                 deleteItem={deleteExpense}
@@ -52,8 +52,8 @@ const ExpenseStyled = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #FCF6F9;
-        border: 2px solid #FFFFFF;
+        background: #DBAFA0;
+        border: 2px solid #DBAFA0;
         box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
         border-radius: 20px;
         padding: 1rem;

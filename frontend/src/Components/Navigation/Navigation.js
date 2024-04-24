@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
-import { signout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
 import { useGlobalContext } from '../../context/globalContext';
 import { rupiah } from '../../utils/rupiahFormat'
@@ -11,9 +10,8 @@ function Navigation({active, setActive}) {
     return (
         <NavStyled>
             <div className="user-con">
-                <img src={avatar} alt="" />
                 <div className="text">
-                    <h2>User</h2>
+                    <h2>Total Balance</h2>
                     <p>{rupiah(totalBalance())}</p>
                 </div>
             </div>
@@ -30,9 +28,9 @@ function Navigation({active, setActive}) {
                 })}
             </ul>
             <div className="bottom-nav">
-                <li>
-                    {signout} Sign Out
-                </li>
+                {/* <li>
+                    {signout}
+                </li> */}
             </div>
         </NavStyled>
     )
@@ -42,14 +40,12 @@ const NavStyled = styled.nav`
     padding: 2rem 1.5rem;
     width: 374px;
     height: 100%;
-    background: rgba(252, 246, 249, 0.78);
-    border: 3px solid #FFFFFF;
+    background: #DBAFA0;
     backdrop-filter: blur(4.5px);
-    border-radius: 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1rem;
     .user-con{
         height: 100px;
         display: flex;
