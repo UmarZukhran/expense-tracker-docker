@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import avatar from '../../img/avatar.png'
 import { menuItems } from '../../utils/menuItems'
 import { useGlobalContext } from '../../context/globalContext';
 import { rupiah } from '../../utils/rupiahFormat'

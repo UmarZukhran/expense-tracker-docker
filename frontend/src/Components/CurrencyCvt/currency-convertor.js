@@ -46,8 +46,11 @@ const CurrencyConverter = () => {
         `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurrency}&to=${toCurrency}`
       );
       const data = await res.json();
-
-      setConvertedAmount(data.rates[toCurrency] + " " + toCurrency);
+      if (toCurrency == "IDR") {
+        setConvertedAmount(rupiah(data.rates[toCurrency]) + " ");
+      } else {
+        setConvertedAmount(data.rates[toCurrency] + " " + toCurrency);
+      }
     } catch (error) {
       console.error("Error Fetching", error);
     } finally {
@@ -74,10 +77,10 @@ const CurrencyConverter = () => {
   };
 
   return (
-    <InnerLayout>
     <ConvertorStyled>
-      <div>
-        <h1>Currency Converter</h1>
+    <InnerLayout>
+    <h1>Currency Converter</h1>
+      <div className="wrapper">
 
         <div className="currDropdown">
           <CurrencyDropdown
@@ -108,7 +111,6 @@ const CurrencyConverter = () => {
             title="To:"
             handleFavorite={handleFavorite}
           />
-        </div>
 
         <div className="amount">
           <label htmlFor="amount">Amount:</label>
@@ -128,30 +130,47 @@ const CurrencyConverter = () => {
             Converted Amount: {convertedAmount}
           </div>
         )}
+        </div>
+        <div className="chart-con">
+          <Chart />
+        </div>
       </div>
-      <div className="chart-con">
-        <Chart />
-      </div>
+      </InnerLayout>
+
     </ConvertorStyled>
-    </InnerLayout>
   );
 };
 
 const ConvertorStyled = styled.div`
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto); 
+  }
+
   .currDropdown {
-    display: flex;
     align-items: center;
     gap: 1rem;
     margin: 20px;
     margin-bottom: 1rem;
   }
 
+  .swapCurrButton {
+    display: flex;
+    justify-content: center;
+  }
+
   label {
     font-size: 1rem;
     font-weight: bold;
     display: block;
-    margin-left: 20px;
+    margin-left: 8px;
     margin-bottom: 0.5rem;
+  }
+
+  .amount {
+    margin-top: 50px;
   }
 
   input {
@@ -160,7 +179,6 @@ const ConvertorStyled = styled.div`
     border-radius: 4px;
     width: 235px;
     font-size: 1rem;
-    margin-left: 20px;
     margin-bottom: 1rem;
   }
 
@@ -172,7 +190,7 @@ const ConvertorStyled = styled.div`
     border-radius: 30px;
     cursor: pointer;
     font-size: 1rem;
-    margin-left: 20px;
+    margin-top: 15px;
   }
 
   .convertButton button:hover {
@@ -182,13 +200,12 @@ const ConvertorStyled = styled.div`
   .convertedAmount {
     margin-top: 1rem;
     font-weight: bold;
-    margin-left: 20px;
   }
 
   .chart-con {
       margin: 15px;
       margin-top: 50px;
-      width: 850px;
+      width: 820px;
       height: 500px;
   }
 `

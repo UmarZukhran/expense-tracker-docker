@@ -3,10 +3,10 @@ import { Line } from 'react-chartjs-2';
 import styled from 'styled-components';
 import axios from 'axios';
 
-const currencies = ['USD', 'EUR', 'GBP', 'JPY', 'IDR']; // List of currencies for dropdown
+const currencies = ['USD', 'EUR', 'JPY', 'IDR']; 
 
 function Chart() {
-  const [selectedCurrency, setSelectedCurrency] = useState('USD'); // State to track selected currency
+  const [selectedCurrency, setSelectedCurrency] = useState('USD'); 
   const [exchangeRates, setExchangeRates] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,6 @@ function Chart() {
       try {
         const response = await axios.get(`https://api.exchangerate-api.com/v4/latest/${selectedCurrency}`);
         const data = response.data.rates;
-        // Convert data into array of objects suitable for Chart.js
         const exchangeRatesData = Object.keys(data).map((currency) => ({
           currency,
           rate: data[currency],
@@ -26,13 +25,13 @@ function Chart() {
     };
 
     fetchExchangeRates();
-  }, [selectedCurrency]); // Fetch data whenever selectedCurrency changes
+  }, [selectedCurrency]); // fetch data whenever selectedCurrency changes
 
-  // Extract labels (currency names) and data (exchange rates) from the fetched data
+  // extract labels (currency names) and data (exchange rates) from the fetched data
   const labels = exchangeRates.map((exchangeRate) => exchangeRate.currency);
   const data = exchangeRates.map((exchangeRate) => exchangeRate.rate);
 
-  // Chart.js data configuration
+  // chart.js data configuration
   const chartData = {
     labels: labels,
     datasets: [
@@ -46,7 +45,6 @@ function Chart() {
     ],
   };
 
-  // Handle change in selected currency
   const handleCurrencyChange = (e) => {
     setSelectedCurrency(e.target.value);
   };
