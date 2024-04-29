@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: uzridw/backend-image
+          image: uzridw/expense-tracker-backend-image
           ports:
             - containerPort: 5000
           readinessProbe:

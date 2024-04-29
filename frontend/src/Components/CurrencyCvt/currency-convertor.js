@@ -37,7 +37,6 @@ const CurrencyConverter = () => {
 
   console.log(currencies);
 
-  // Conversion -> https://api.frankfurter.app/latest?amount=1&from=USD&to=IDR
   const convertCurrency = async () => {
     if (!amount) return;
     setConverting(true);
